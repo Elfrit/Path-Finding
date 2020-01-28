@@ -25,8 +25,12 @@ class Case {
 	void Case::setStatus(int var){
 		this->status = var;
 	}
+
+	void Case::setSelected() {
+		this->setSelected = false;
+	}
 	
-	String toString() const{
+	String Case::toString() const{
 		return this->status;
 	}
 	

@@ -9,14 +9,18 @@ public:
 
 	bool Case::canAdd(const Case &box) const;
 
-	int getStatus() const;
+	int Case::getStatus() const;
 
-	void setStatus(int var);
+	void Case::setStatus(int var);
 	
-	String toString() const;
+	void Case::setSelected();
+	
+	String Case::toString() const;
 	
 	void Case::saisir();
 
 private:
 	int status;
+	bool selected = true;
+	//int trapped;
 };
