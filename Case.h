@@ -20,7 +20,7 @@ public:
 	void Case::saisir();
 
 private:
-	int status;
+	int status = 0;
 	bool selected = true;
 	//int trapped;
 };
