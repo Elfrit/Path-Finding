@@ -13,7 +13,7 @@ class Labyrinthe {
 		return false;
 	}
 
-	void Labyrinthe::noeud(int debutX, int debutY){ //Ici, c'est une case pas un labyrinthe !
+	void Labyrinthe::noeud(int debutX, int debutY){ //Ici, c'est peut être une Case pas un Labyrinthe
 		if (moveOk(debutX, debutY)) {
 			if (moveOk(debutX + 1, debutY) && this->labyrinthe[debutX + 1][debutY].canAdd()) {
 				this->labyrinthe[debutX + 1][debutY].setStatus(labyrinthe[debutX][debutY].getStatus() + 1);
