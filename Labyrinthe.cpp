@@ -43,7 +43,7 @@ class Labyrinthe {
 		for (int i(0); i < this->x; ++i) {
 			for (int j(0); i < this->y; ++j) {
 				if (this->labyrinthe[i][j].getStatus() == statCase) {
-					this->labyrinthe[i][j].noeud(debutX, debutY) //A voir cette fonction est très suspecte
+					this->labyrinthe[i][j].noeud(debutX, debutY) //A voir, cette fonction est très suspecte
 				}
 			}
 		}
@@ -51,11 +51,13 @@ class Labyrinthe {
 	}
 
 	String Labyrinthe::toString() const {
+		String affiche = "";
 		for (int i(0); i < this->x; ++i) {
-			String affiche = "";
 			for (int j(0); i < this->y; ++j) {
-				affiche+=""
+				affiche += this->labyrinthe[i][j].getStatus(); +' | ';
 			}
+			affiche+='\n'
 		}
+		return affiche;
 	}
 };
