@@ -40,4 +40,5 @@ public:
 private:
 	int x, y;
 	vector<Case> labyrinthe;
+	int graphe[x][y]; //A verifier
 };

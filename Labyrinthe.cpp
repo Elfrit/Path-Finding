@@ -94,13 +94,38 @@ class Labyrinthe {
 		}	
 	}
 
-	int Labyrinthe::*findPath() { //Dijkstra
-		vector<int> path;
+	int Labyrinthe::*findPath(int iDepart, int jDepart) { //Dijkstra once
+		int tabTemp = [this->x][this->y]; //Va contenir les différentes colonnes 
+		for (int i(0); i < this->x; ++i) {
+			for (int j(0); j < this->y; ++j) {
+				tabTemp[i][j] = -1;
+			}
+		}
+		vector<int>path; //Va contenir le noeud associé à la ligne/colonne
 
+		path.push_back(this->labyrinthe[iDepart][jDepart]);
+		for (int i(1); i < this->x; ++i) {
+			for (int j(0); this->y; ++j) { //Boucle pour inscrire à la ligne voulue
+				if (this->graphe[i][j] != 0) {
+					tabTemp[i][j] = graphe[path[i]][j]; //La ligne du graphe où le noeud a été le plus petit est ajouté 
+				}
+			}
+			path.push_back(tabMin[tabTemp[i]]); //Ajoute le plus petit noeud à path
+			if (path[path.size()] == -2) { //Si l'algorithme atteint la fin, la boucle est quitté
+				i = this->x;
+			}
 
+			for (int j(0); j < this->y; ++j) { //Verifie si l'ancienne ligne contient des valeurs inférieurs (!= -1) au nouveau
+				if (tabTemp[i][j] > tab[i - 1][j]{
+					tabTemp[i][j] = tab[i - 1][j];
+				}
+			}
+		}
 
+		vector<int> fastPath;
+		fastPath.pushBack(-2);
 
-
+		//à partir d'ici l'objectif est de remplir fastPath avec le chemin le plus rapide. Pour cela il faut parcourir path et tabTemp
 
 		return path;
 	}
