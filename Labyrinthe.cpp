@@ -14,9 +14,10 @@ class Labyrinthe {
 	}
 
 	void Labyrinthe::noeud(int debutX, int debutY){ //Ici, c'est peut être une Case pas un Labyrinthe
-		if (moveOk(debutX, debutY)) {
+		if (moveOk(debutX, debutY)) { //Si moveOk et peut ajouter, ajoute la case ici et au graphe.
 			if (moveOk(debutX + 1, debutY) && this->labyrinthe[debutX + 1][debutY].canAdd()) {
 				this->labyrinthe[debutX + 1][debutY].setStatus(labyrinthe[debutX][debutY].getStatus() + 1);
+				this->graphe[debutX][]
 			}
 			if (moveOk(debutX, debutY + 1) && this->labyrinthe[debutX][debutY + 1].canAdd()) {
 				this->labyrinthe[debutX][debutY + 1].setStatus(labyrinthe[debutX][debutY].getStatus() + 1);
@@ -56,7 +57,7 @@ class Labyrinthe {
 		bool end = false;
 		for (int i(0); i < this->x; ++i) {
 			for (int j(0); i < this->y; ++j) {
-				if (labyrinthe[i][j].getStatus() == -2) {
+				if (labyrinthe[i][j].getStatus() == -2) { //La fin a été atteint
 					end = true;
 				}
 				else if (this->labyrinthe[i][j].getStatus() == numCase and this->labyrinthe[i][j].getSelected() == true;) {
@@ -73,20 +74,20 @@ class Labyrinthe {
 		return -1;
 	}
 
-	void Labyrinthe::search() { //Methode où Dijkstra est utilisé 1 fois
+	void Labyrinthe::search() { //Tant que passeSuivant -> Parcours et inclut dans graphe
 		int i = 0;
 		bool passeSuivant = true; //Il y a un chemin possible entre le debut et la fin
 		while (passeSuivant) {
 			switch (this->parcourir(i)) {
-				case -1:
+				case -1: //Il y a un mur
 					printf("Il n'existe aucun chemin pour arriver à la fin.");
 					passeSuivant = false;
 					break;
-				case 0:
+				case -2: //La fin a été atteint
 					printf('Le labyrinthe est complet !');
 					passeSuivant = false;
 					break;
-				default :
+				default : //La recherche continue
 					printf('Actuellement nous en somme à la %d ittération', i);
 					break;
 			}
@@ -95,9 +96,13 @@ class Labyrinthe {
 	}
 
 	int tabMin(int *tab) const{
-		for (int i(0); i < sizeof(this->labyrinthe); ++i) {
-			
+		int min = tab[0];
+		for (int i(1); i < sizeof(this->labyrinthe); ++i) {
+			if min > tab[i]{
+				min = tab[i];
+			}
 		}
+		return min;
 	}
 
 	int Labyrinthe::*findPath(int iDepart, int jDepart) { //Dijkstra once
