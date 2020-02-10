@@ -116,7 +116,7 @@ class Labyrinthe {
 					tabTemp[i][j] = graphe[path[i]][j]; //La ligne du graphe où le noeud a été le plus petit est ajouté 
 				}
 			}
-			path.push_back(tabMin[&tabTemp[i]]); //Ajoute le plus petit noeud à path
+			path.push_back(tabMin[tabTemp[i]]); //Ajoute le plus petit noeud à path
 			if (path[path.size()] == -2) { //Si l'algorithme atteint la fin, la boucle est quitté
 				i = this->x;
 			}
